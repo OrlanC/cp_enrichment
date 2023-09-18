@@ -6,11 +6,11 @@ to set up parameters of your enrichment analysis or visualize your results in fa
 
 Programs and files required before initiating with this tutorial:
 
--:R: R and RStudio installed in your computer
+-R and RStudio installed in your computer
  
 -:package: clusterProfiler package installed in R
 
--:egg: from genome functional annotation output with eggnog to generate an input file, must tab-separated and header (column names), see example:
+-:egg: from genome functional annotation output with eggnog, to generate an input file, must tab-separated and header (column names), see example:
 
 Example of inputfile:
 
