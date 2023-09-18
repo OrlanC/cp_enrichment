@@ -5,13 +5,14 @@ Please visit https://yulab-smu.top/biomedical-knowledge-mining-book/ for any dou
 to set up parameters of your enrichment analysis or visualize your results in fancy plots. 
 
 Programs and files required before initiating with this tutorial:
-:R: R and RStudio installed in your computer 
-:package: clusterProfiler package installed in R
-:egg: from genome functional annotation output with eggnog to generate an input file, must tab-separated and header (column names), see example:
+
+-:R: R and RStudio installed in your computer 
+-:package: clusterProfiler package installed in R
+-:egg: from genome functional annotation output with eggnog to generate an input file, must tab-separated and header (column names), see example:
 
 Example of inputfile:
 
-|ID          | KEGG ko (Knumber)|
+|ID          | KEGG (ko:Knumber)|
 |:----------:|:----------:|
 |Tatro_000080-T1|ko:K14779|
 |Tatro_000081-T1|ko:K04567|
