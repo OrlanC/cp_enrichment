@@ -49,3 +49,5 @@ Example 2
 |Tatro_011193-T1|	-1.7769276895162|	5.59275713588909|	87.8612261215152|	4.25120273152264e-09|	7.64536299237032e-06|
 |Tatro_007063-T1|	-1.39013488320348|	6.72042447802748|	70.9803765515046|	2.67995471686695e-08|	1.6686234407108e-05|
 
+## Perform KEGG pathway enrichment analysis in R
+[Here](file:///C:/Users/Orlando%20Camargo/Desktop/cp_enrichment/kegg_pathway_enrichment.html) you can see the R script for the enrichment analysis using *clusterprofiler*
