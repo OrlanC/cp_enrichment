@@ -10,9 +10,9 @@ Programs and files required before initiating with this tutorial:
  
 -:package: clusterProfiler package installed in R
 
--:egg: from genome functional annotation output with eggnog, to generate an input file, must tab-separated and header (column names), see example:
+-:egg: from genome functional annotation outputs with eggnog, to generate an input file, must tab-separated and header (column names), see example:
 
-Example of inputfile:
+Example of input file 1:
 
 |ID          | KEGG (ko:Knumber)|
 |:----------:|:----------:|
@@ -25,3 +25,35 @@ Example of inputfile:
 |Tatro_000089-T1|-|
 |Tatro_000090-T1|ko:K20299|
 |Tatro_000091-T1|ko:K00344,ko:K00384|
+
+-list of IDs to be analyzed, file in .txt
+
+Example 1 of input file 2:
+
+|ID          |
+|:----------:|
+|Tatro_005212-T1|
+|Tatro_000081-T1|
+|Tatro_002393-T1|
+|Tatro_010760-T1|
+|Tatro_000038-T1|
+|Tatro_003445-T1|
+|Tatro_004635-T1|
+|Tatro_010865-T1|
+|Tatro_004118-T1|
+|Tatro_004110-T1|
+|Tatro_006679-T1|
+|...|
+
+Example 2
+|	logFC |	logCPM|	F|	PValue|	FDR|
+|:-----------:|:-----:|:-:|:---------:|:--:|
+|Tatro_002208-T1|	-1.84328735162963|	5.40075099864936|	97.0384436563709|	1.75668775562383e-09|	5.52001735279739e-06|
+|Tatro_011096-T1|	-1.20328045897947|	5.52454556561384|	95.2782228064919|	2.06982179380337e-09|	5.52001735279739e-06|
+|Tatro_008592-T1|	-1.54031007632897|	6.41900167215348|	93.4725834448608|	2.4555237334508e-09|	5.52001735279739e-06|
+|Tatro_011193-T1|	-1.7769276895162|	5.59275713588909|	87.8612261215152|	4.25120273152264e-09|	7.64536299237032e-06|
+|Tatro_007063-T1|	-1.39013488320348|	6.72042447802748|	70.9803765515046|	2.67995471686695e-08|	1.6686234407108e-05|
+|Tatro_003659-T1|	-1.95545129126075|	4.86507952499812|	70.7498029296453|	2.75451492028403e-08|	1.6686234407108e-05|
+|Tatro_003634-T1|	-1.52844118688337|	7.4119232181074|	70.6619621323958|	2.78351330189746e-08|	1.6686234407108e-05|
+|Tatro_007264-T1|	-0.885853634344961|	6.08856871775295|	66.8653032979152|	4.42070587411479e-08|	2.23846894804718e-05|
+|Tatro_002289-T1|	-2.05359818988217|	7.93288322571686|	62.715514632035|	7.5048475620256e-08|	3.49979255500729e-05|
