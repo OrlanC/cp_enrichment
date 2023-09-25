@@ -50,4 +50,4 @@ Example 2
 |Tatro_007063-T1|	-1.39013488320348|	6.72042447802748|	70.9803765515046|	2.67995471686695e-08|	1.6686234407108e-05|
 
 ## Perform KEGG pathway enrichment analysis in R
-[Here](file:///C:/Users/Orlando%20Camargo/Desktop/cp_enrichment/kegg_pathway_enrichment.html) you can see the R script for the enrichment analysis using *clusterprofiler*
+[Here](https://github.com/OrlanC/cp_enrichment/kegg_pathway_enrichment.html) you can see the R script for the enrichment analysis using *clusterprofiler*.
