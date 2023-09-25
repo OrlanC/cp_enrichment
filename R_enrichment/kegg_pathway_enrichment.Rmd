@@ -1,0 +1,139 @@
+---
+title: "KEGG pathway enrichment"
+author: "Orlando Camargo"
+date:
+output:
+  html_document: default
+  pdf_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "C:/Users/Orlando Camargo/Desktop/cp_enrichment/input_files/")
+```
+
+### KEGG pathway enrichment in non-model organisms using *cluserProfiler*
+
+This document contains steps required to perform enrichment analysis using the clusterprofiler package.
+
+How is structured: 
+
+
+``` kegg_enrichment
+1) Install required packages
+2) Load packages
+3) Set the working and output directory
+4) Create a table with IDs and ko:Knumber from input file 1
+5) Perform KEGG pathway enrichment analysis
+6) Plot results
+```
+
+
+For more details on using *clusterprofiler* see <http://yulab-smu.top/biomedical-knowledge-mining-book/index.html>.
+
+#### Install and load packages
+
+Some packages can be installed from repository CRAN, others such [*clusterprofiler*](https://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) via Biocoductor. These lines are critical; if the enrichmente analysis shows an error, it is necessary to rerun it.
+
+Install and load **clusterprofiler** package and install **R.utilis**:
+
+```{r package, message=FALSE, warning=FALSE}
+library (clusterProfiler)
+getOption("clusterProfiler.download.method")
+#install.packages("R.utils") #Uncomment to install and reinstall (in case of error).
+R.utils::setOption("clusterProfiler.download.method","auto")
+```
+
+Also install and load the next packages
+
+```{r nextpackage, message=FALSE, warning=FALSE}
+library("topGO")
+library("dplyr")
+library("R.utils")
+library("ggplot2")
+library("enrichplot")
+library("RColorBrewer")
+```
+
+#### Set working directory and output file directory
+
+The working directory is where the input files are: [Input file 1 (IDs-Knumber) and Input file 2 (IDs to be analyzed).](https://github.com/OrlanC/cp_enrichment)
+
+```{r directory}
+setwd("C:/Users/Orlando Camargo/Desktop/cp_enrichment/input_files/")
+outpathcount = "C:/Users/Orlando Camargo/Desktop/cp_enrichment/results/"
+```
+
+#### Create a table with IDs and ko:Knumber from input file 1
+
+It is important to generate a organized table where each Knumber has its corresponding ID.
+
+```{r table}
+KEGG_db<- readMappings("Tatroviride_protein_KEGG_ko.txt",sep="\t", IDsep = ",")
+
+KEGGpath<-data.frame()
+for(i in names(KEGG_db)){
+  y =KEGG_db[[i]]
+  ln<-length(KEGG_db[[i]])
+  x=data.frame(ID=rep(i,ln),y)
+  KEGGpath<-rbind(KEGGpath,x)
+}
+KEGGpath$y<-sub("ko:","",KEGGpath$y)
+colnames(KEGGpath)<-c("ID","KEGG")
+
+KEGGpath[60:80,]
+```
+
+Read input file 2, this can be the differential expression result table or a ID list in .txt.
+
+```{r inputfile2}
+
+data = read.table("input_file_2.txt", header = TRUE, sep="\t",  
+                  quote= "", row.names=1, comment.char="")
+head(data)
+id<-rownames(data)
+id_ko<-KEGGpath[which(KEGGpath$ID%in%id),]
+head(id_ko, n = 10)
+
+length(id_ko$ID)
+
+ko<-id_ko[id_ko$KEGG!="-",] # Delete those IDs that have non-Knumber associated.
+head(ko)
+```
+
+#### Perform the KEGG pathway enrichment analysis
+
+Use Knumber from data frame **ko**. In this step, you might get an error; if it happens, go back to **Install and load packages**.
+
+```{r enrichment, fig.width=13}
+knum<-ko$KEGG
+
+enKEGG<-enrichKEGG(knum, organism = 'ko', minGSSize = 1,keyType = "kegg", 
+                   pvalueCutoff = 0.05,pAdjustMethod = "BH", qvalueCutoff = 1)
+
+write.table(enKEGG, file=paste(outpathcount,"KEGG.txt", sep = ""), 
+            row.names=TRUE, col.names=NA, quote=FALSE, sep="\t") 
+#export only significant results
+#use enKEGG@result to get all results (significant and not significant results)
+
+enKEGG
+head(enKEGG@result)
+
+```
+
+#### Plot results
+
+With *enrichplot*, it is possible to generate distinct plots to represent enrichment results, either using all the significant results or some. Also, with *clusterprofiler*, the results can be visualized in a KEGG pathway with a web browser.
+
+```{r plot, fig.height=5, fig.width=13}
+p1<-dotplot(enKEGG)
+p2<-barplot(enKEGG)
+cowplot::plot_grid(p1, p2,ncol=2, labels=LETTERS[1:2], rel_widths=c(2, 2))
+```
+
+Visualize in a web browser:
+
+    browseKEGG(enKEGG, map00564)
+
+![KEGG Native Enriched Pathway Plot](results/map00564.png) [map00564](https://www.kegg.jp/kegg-bin/show_pathway?map00564/K13621/K01126/K13507/K18696/K16369/K00006/K00111/K01114/K01115)
