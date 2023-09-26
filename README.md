@@ -10,7 +10,7 @@ Programs and files required before initiating with this tutorial:
  
 -:package: clusterProfiler package installed in R
 
--:egg: from genome functional annotation outputs with eggnog, to generate an input file, must tab-separated and header (column names), see example:
+-:egg: To generate an input file from genome functional annotation outputs with eggnog. This input file must tab-separated and header (column names), see example:
 
 Example of input file 1:
 
@@ -21,7 +21,7 @@ Example of input file 1:
 |Tatro_000082-T1|ko:K11340,ko:K11400,ko:K11652|
 |Tatro_000083-T1|-|
 
--List of IDs to be analyzed, file in .txt
+-List of IDs to be analyzed like input file 2 in .txt
 
 Example 1 of input file 2:
 
