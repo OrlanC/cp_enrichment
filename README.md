@@ -33,7 +33,7 @@ Example 1 of input file 2:
 |Tatro_003445-T1|
 |...|
 
-Example 2
+Example 2 of input file 2:
 |ID                |	logFC |	logCPM|	F|	PValue|	FDR|
 |:----------------:|:-----------:|:-----:|:-:|:---------:|:--:|
 |Tatro_002208-T1|-1.843|5.400|97.038|1.756e-09|5.520e-06|
