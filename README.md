@@ -13,6 +13,11 @@ Programs and files required before initiating with this tutorial:
 -:egg: from genome functional annotation outputs with eggnog, to generate an input file, must tab-separated and header (column names), see example:
 
 Example of input file 1:
+<style scoped>
+table {
+  font-size: 13px;
+}
+</style>
 
 |ID          | KEGG (ko:Knumber)|
 |:----------:|:----------:|
@@ -29,7 +34,11 @@ Example of input file 1:
 -list of IDs to be analyzed, file in .txt
 
 Example 1 of input file 2:
-
+<style scoped>
+table {
+  font-size: 13px;
+}
+</style>
 |ID          |
 |:----------:|
 |Tatro_005212-T1|
